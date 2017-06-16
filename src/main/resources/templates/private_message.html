@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Cała prywatna wiadomość</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+
+
+<table style="width: 1000px; border-bottom: 0px">
+    <tr>
+        <td style="font-weight:bold">Nadawca:</td>
+        <td style="font-weight:bold">Data:</td>
+    </tr>
+    <tr>
+        <td style="width: 100px">
+            <a th:href="@{'/user/user_profile/'+${msg.author_name}}" th:text="${msg.author_name}"/>
+
+        </td>
+
+
+        <td style="width: 150px" th:text="${msg.date}"></td>
+
+
+        <br/>
+    </tr>
+</table>
+<table style="width: 1000px; border-top: 0px; border-bottom: 0px">
+    <tr>
+        <th style="width: 50px; text-align: left">Temat:</th>
+    </tr>
+    <tr>
+        <td class="a" th:text="${#strings.abbreviate(msg.topic,100)}"></td>
+    </tr>
+</table>
+<table style="width: 1000px; border-top: 0px">
+    <tr>
+    <tr>
+        <th style="width: 50px; text-align: left">Treść wiadomości:</th>
+    </tr>
+    <td class="a" th:text="${#strings.abbreviate(msg.content,500)}"></td>
+
+    </tr>
+</table>
+
+
+</body>
+</html>
