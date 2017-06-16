@@ -30,18 +30,18 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String addUser(@RequestParam(value = "username", defaultValue = " ") String username,
                           @RequestParam(value = "password", defaultValue = " ") String pass,
-                          @RequestParam(value = "city", defaultValue = " ") String city) {
+                          @RequestParam(value = "phone_number", defaultValue = " ") String phone_number) {
 
-        String redirectUrlError = "/user/register";
+        String redirectUrlError = "/error";
         String redirectUrlSuccess = "/user/login";
 
         Pattern p = Pattern.compile("[a-zA-Z0-9]*");
-        Pattern pcity = Pattern.compile("[a-zA-Z]*");
+        Pattern pphonenumber = Pattern.compile("[0-9]*");
         if (!p.matcher(username).matches()) return "redirect:" + redirectUrlError;
         if (!p.matcher(pass).matches()) return "redirect:" + redirectUrlError;
-        if (!pcity.matcher(city).matches()) return "redirect:" + redirectUrlError;
+        if (!pphonenumber.matcher(phone_number).matches()) return "redirect:" + redirectUrlError;
 
-        userService.addUser(username, pass, city);
+        userService.addUser(username, pass, phone_number);
         return "redirect:" + redirectUrlSuccess;
 
     }
@@ -66,7 +66,7 @@ public class UserController {
 
         String user_name = userService.getUserName();
 
-        if(target_name.equals(user_name))return "my_profile";
+        if (target_name.equals(user_name)) return "my_profile";
 
         else if (userService.checkIfUserExists(target_name)) {
 

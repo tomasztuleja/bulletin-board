@@ -14,9 +14,9 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    public void addUser(String username, String pass, String city) {
+    public void addUser(String username, String pass, String phone_number) {
 
-        userDao.addUser(username, generate(pass), city);
+        userDao.addUser(username, generate(pass), phone_number);
     }
 
     public static String generate(String pass) {

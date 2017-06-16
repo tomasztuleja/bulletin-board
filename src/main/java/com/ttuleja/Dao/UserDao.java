@@ -18,9 +18,9 @@ public class UserDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void addUser(String username, String pass, String city) {
-        final String sql = "INSERT INTO user (user_name,user_password,user_city) VALUES (?,?,?)";
-        jdbcTemplate.update(sql, new Object[]{username, pass, city});
+    public void addUser(String username, String pass, String phone_number) {
+        final String sql = "INSERT INTO user (user_name,user_password,phone_number) VALUES (?,?,?)";
+        jdbcTemplate.update(sql, new Object[]{username, pass,phone_number});
     }
 
     public String getUserName() {

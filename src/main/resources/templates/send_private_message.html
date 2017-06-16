@@ -5,6 +5,8 @@
     <title>Wyślij prywatną wiadomość</title>
 </head>
 <body>
+<div th:replace="fragments/header :: header"/>
+
 <div sec:authorize="isAuthenticated()">
     <form method="POST">
 
