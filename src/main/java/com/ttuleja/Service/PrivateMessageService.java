@@ -23,11 +23,8 @@ public class PrivateMessageService {
     }
 
     public Collection<PrivateMessage> showSentPrivateMessages(String user_name) {
-        try {
-            return this.privateMessageDao.showSentPrivateMessages(user_name);
-        } catch (NullPointerException e) {
-            return null;
-        }
+        return this.privateMessageDao.showSentPrivateMessages(user_name);
+
     }
 
     public int checkIfMessageBelongsToUser(int id, String user_name) {

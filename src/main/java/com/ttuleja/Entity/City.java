@@ -13,7 +13,8 @@ public class City {
         this.city_name = city_name;
     }
 
-    public City(){}
+    public City() {
+    }
 
     public int getCity_id() {
         return city_id;

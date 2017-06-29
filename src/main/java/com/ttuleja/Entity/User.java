@@ -21,7 +21,8 @@ public class User {
         this.phone_number = phone_number;
     }
 
-    public User(){}
+    public User() {
+    }
 
     public int getUser_id() {
         return user_id;

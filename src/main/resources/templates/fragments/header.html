@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
-<div style="padding: 20px" th:fragment="header">
-    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"></link>
+<div th:fragment="header">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
 
-    <div style="display: inline"> <a th:href="@{/}">Strona główna</a></div>
 
-    <div style="display: inline" sec:authorize="isAuthenticated()"><a th:href="@{/user/my_profile}">Mój profil</a></div>
+    <hr class="hr-primary"/>
+    <ol class="breadcrumb bread-primary ">
+        <a th:href="@{/}">
+            <button class="btn btn-primary">Strona główna</button></a>
 
-<div style="display: inline" sec:authorize="isAnonymous()">
-    <a href="/user/login" th:href="@{/user/login}">Zaloguj</a>
-</div>
-<div style="display: inline" sec:authorize="isAnonymous()">
-    <a href="/user/register" th:href="@{/user/register}">Zarejestruj</a>
-</div>
+        <a sec:authorize="isAuthenticated()" th:href="@{/user/my_profile}">
+            <button class="btn btn-primary">Mój profil</button></a>
 
-<div style="display: inline" sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/user/admin}">Admin panel</a></div>
-<div style="display: inline" sec:authorize="isAuthenticated()">
-    <form th:action="@{/logout}" style="display: inline;" method="post"><input type="submit" value="Wyloguj"/></form>
-</div>
-<div sec:authorize="isAuthenticated()" th:inline="text" style="float:right;">
-    Zalogowany jako: [[${#httpServletRequest.remoteUser}]]
-</div>
+        <a sec:authorize="isAnonymous()" th:href="@{/user/login}">
+            <button class="btn btn-primary">Zaloguj</button></a>
+
+        <a sec:authorize="isAnonymous()" th:href="@{/user/register}">
+            <button class="btn btn-primary">Zarejestruj</button></a>
+
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/}">
+            <button class="btn btn-primary">Panel administratora</button></a>
+
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}">
+            <button class="btn btn-primary">Wyloguj</button></a>
+
+        <div sec:authorize="isAuthenticated()" th:inline="text" style="float:right; margin-right: 5px">
+            Zalogowany jako: [[${#httpServletRequest.remoteUser}]]
+        </div>
+
+    </ol>
+
+
 </div>
 </body>
 </html>

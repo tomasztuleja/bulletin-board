@@ -52,7 +52,7 @@ public class PrivateMessageController {
 
         String user_name = userService.getUserName();
 
-        if (userService.checkIfUserExists(target_name)&&!(target_name.equals(user_name))) {
+        if (userService.checkIfUserExists(target_name) && !(target_name.equals(user_name))) {
             model.addAttribute("target_name", target_name);
             model.addAttribute("user_name", user_name);
 

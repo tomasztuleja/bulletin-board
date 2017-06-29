@@ -23,21 +23,18 @@ public class BbsDao {
         String sql;
         Collection<Item> items;
 
-        if (category.equals("all")&&city.equals("all")) {
+        if (category.equals("all") && city.equals("all")) {
             sql = String.format("SELECT * FROM item ORDER BY %s DESC", sort_by);
             items = jdbcTemplate.query(sql, new BeanPropertyRowMapper(Item.class));
-        }
-        else if(city.equals("all")) {
+        } else if (city.equals("all")) {
             sql = String.format("SELECT * FROM item WHERE item_category=? ORDER BY %s DESC", sort_by);
             items = jdbcTemplate.query(sql, new BeanPropertyRowMapper(Item.class), category);
 
-        }
-        else if(category.equals("all")){
+        } else if (category.equals("all")) {
             sql = String.format("SELECT * FROM item WHERE item_city=? ORDER BY %s DESC", sort_by);
             items = jdbcTemplate.query(sql, new BeanPropertyRowMapper(Item.class), city);
 
-        }
-        else{
+        } else {
             sql = String.format("SELECT * FROM item WHERE item_city=? AND item_category=? ORDER BY %s DESC", sort_by);
             items = jdbcTemplate.query(sql, new BeanPropertyRowMapper(Item.class), city, category);
         }
@@ -78,9 +75,10 @@ public class BbsDao {
     }
 
     public void addItem(String item_city, String item_price, String item_category, String user_name, String item_description, String item_name) {
-        final String sql = "INSERT INTO item (item_city,item_price, user_name, item_name, item_description, item_category) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO item (item_city,item_price, user_name, item_name, item_description, item_category) VALUES (?,?,?,?,?,?)";
 
-        jdbcTemplate.update(sql, new Object[]{item_city,item_price, user_name, item_name, item_description, item_category});
+        jdbcTemplate.update(sql, new Object[]{item_city, item_price, user_name, item_name, item_description, item_category});
 
     }
+
 }

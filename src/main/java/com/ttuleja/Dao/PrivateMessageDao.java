@@ -54,7 +54,7 @@ public class PrivateMessageDao {
     }
 
     public void sendPrivateMessage(String user_name, String target_name, String topic, String content) {
-        final String sql = "INSERT INTO private_message (author_name, receiver_name, topic, content) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO private_message (author_name, receiver_name, topic, content) VALUES (?,?,?,?)";
         jdbcTemplate.update(sql, new Object[]{user_name, target_name, topic, content});
 
     }

@@ -41,6 +41,7 @@ public class BbsService {
     }
 
     public void addItem(String item_city, String item_price, String item_category, String user_name, String item_description, String item_name) {
-        this.bbsDao.addItem(item_city,item_price, item_category, user_name, item_description, item_name);
+        this.bbsDao.addItem(item_city, item_price, item_category, user_name, item_description, item_name);
     }
+
 }

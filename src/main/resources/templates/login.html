@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Strona logowania</title>
+
 </head>
 <body>
 <div th:replace="fragments/header :: header"/>
@@ -22,9 +23,13 @@
     <h1 style="color:blue">Wylogowano.</h1>
 </div>
 <form sec:authorize="isAnonymous()" th:action="@{/user/login}" method="post">
-    <div> User Name : <input type="text" name="username"/> </div><br/>
-    <div> Password: <input type="password" name="password"/> </div><br/>
-    <div><input type="submit" value="Log In"/>    </div>
+    <div> User Name : <input type="text" name="username"/></div>
+    <br/>
+    <div> Password: <input type="password" name="password"/></div>
+    <br/>
+    <div>
+        <button class="btn btn-default" type="submit">Zaloguj</button>
+    </div>
 </form>
 
 </body>

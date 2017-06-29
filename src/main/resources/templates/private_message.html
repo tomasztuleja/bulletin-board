@@ -7,8 +7,17 @@
 <body>
 <div th:replace="fragments/header :: header"/>
 
+<form style="display: inline-flex" th:action="@{/private_messages/}" method="get">
 
-<table style="width: 1000px; border-bottom: 0px">
+    <button class="btn btn-default" type="submit">Otrzymane wiadomości</button>
+</form>
+
+<form style="display: inline-flex" th:action="@{/private_messages/sent}" method="get">
+
+    <button class="btn btn-default" type="submit">Wysłane wiadomości</button>
+</form>
+
+<table class="table table-striped" style="width: 55%; border: solid #e9ecef">
     <tr>
         <td style="font-weight:bold">Nadawca:</td>
         <td style="font-weight:bold">Data:</td>
@@ -25,21 +34,19 @@
 
         <br/>
     </tr>
-</table>
-<table style="width: 1000px; border-top: 0px; border-bottom: 0px">
+
     <tr>
-        <th style="width: 50px; text-align: left">Temat:</th>
+        <th colspan="2" style="width: 50px; text-align: left">Temat:</th>
     </tr>
     <tr>
-        <td class="a" th:text="${#strings.abbreviate(msg.topic,100)}"></td>
+        <td colspan="2" th:text="${msg.topic}"></td>
     </tr>
-</table>
-<table style="width: 1000px; border-top: 0px">
+
     <tr>
     <tr>
-        <th style="width: 50px; text-align: left">Treść wiadomości:</th>
+        <th colspan="2" style="width: 50px; text-align: left">Treść wiadomości:</th>
     </tr>
-    <td class="a" th:text="${#strings.abbreviate(msg.content,500)}"></td>
+    <td colspan="2" th:text="${msg.content}"></td>
 
     </tr>
 </table>

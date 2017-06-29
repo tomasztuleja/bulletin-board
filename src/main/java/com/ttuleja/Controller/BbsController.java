@@ -3,12 +3,15 @@ package com.ttuleja.Controller;
 import com.ttuleja.Service.BbsService;
 import com.ttuleja.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.regex.Pattern;
 
 /**
  * Created by Tomal on 2017-06-14.
@@ -65,8 +68,11 @@ public class BbsController {
 
         String user_name = userService.getUserName();
 
+        Pattern p = Pattern.compile("[0-9]*");
+        if (!p.matcher(item_price).matches()) return "error";
+
         if (!(item_city.equals(" ")) && !(item_price.equals(" ")) && !(item_description.equals(" ")) && !(item_name.equals(" ")) && !(item_category.equals(" "))) {
-            bbsService.addItem(item_city,item_price, item_category, user_name, item_description, item_name);
+            bbsService.addItem(item_city, item_price, item_category, user_name, item_description, item_name);
 
             String redirectUrl = "/";
             return "redirect:" + redirectUrl;
@@ -76,6 +82,5 @@ public class BbsController {
             return "redirect:" + redirectUrl;
         }
     }
-
 
 }

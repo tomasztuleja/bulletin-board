@@ -24,7 +24,8 @@ public class Item {
         this.item_city = item_city;
     }
 
-    public Item(){}
+    public Item() {
+    }
 
     public int getItem_id() {
         return item_id;
